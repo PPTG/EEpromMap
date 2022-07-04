@@ -1,11 +1,12 @@
 class Convert:
     licznik = 0
     dlugosc = 0
-
     @staticmethod
     def to_map():
-        dump = open("dump.txt", "r").read()
-        mapfile = open("map.txt", "a")
+        plik_eeprom = open("dump.txt", "r")
+        dump = plik_eeprom.read()
+        plik_mapa = open("map.txt", "a")
+        mapfile = plik_mapa
         dump = dump.replace("E", "")
         rp = dump.split("\n")
         Convert.dlugosc = len(rp)
@@ -16,11 +17,9 @@ class Convert:
                 from Serial import dump
                 dump.dump_clear(1)
                 return
-            print(line)
             line_to_table = line.split(';')
-
-            print("linetotable:")
-            print(line_to_table)
            # pisz = str(line_to_table[1] + ",")
             mapfile.write(line_to_table[0] + ",")
             Convert.licznik += 1
+        plik_eeprom.close()
+        plik_mapa.close()
