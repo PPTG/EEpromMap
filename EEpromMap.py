@@ -14,7 +14,7 @@ layout = [
     [sg.Text('Port:'),sg.Combo(com_select,default_value=com_select[0], s=(15,22), enable_events=True, readonly=True, k='-com-'),sg.Text('Baud:'),sg.Combo(baudrate_select,default_value=baudrate_select[0], s=(15,22), enable_events=True, readonly=True, k='-baud-')],
     [sg.Submit('Read EEprom'), sg.Cancel('Exit')]
 ]
-window = sg.Window('Arduino EEpromMap', layout, finalize=True)
+window = sg.Window('Arduino_sketch EEpromMap', layout, finalize=True)
 cir = window['canvas'].TKCanvas.create_rectangle(0, 0, 10, 10)
 
 def make_map():
