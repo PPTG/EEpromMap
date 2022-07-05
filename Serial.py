@@ -33,9 +33,8 @@ class dump:
         x = ser.readlines()
 
         for line in x:
-         #   print(line)
-            if(dump.licznik > 0):
-                f.write(line.decode("utf-8"))
+            print(line)
+            f.write(line.decode("utf-8"))
             dump.licznik+=1
         eeprom_copy.close()
     def dump_clear(self):
