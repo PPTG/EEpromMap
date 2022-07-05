@@ -12,7 +12,6 @@ class Serial:
         Serial.baud_selected = c
 
     def connect(self):
-      #  print("Connecting...")
         Serial.ser = serial.Serial(Serial.port_selected, Serial.baud_selected)
         time.sleep(3)
 
@@ -33,7 +32,6 @@ class dump:
         x = ser.readlines()
 
         for line in x:
-            print(line)
             f.write(line.decode("utf-8"))
             dump.licznik+=1
         eeprom_copy.close()

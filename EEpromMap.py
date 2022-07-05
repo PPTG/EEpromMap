@@ -15,7 +15,7 @@ layout = [
     [sg.Text('Display cell number: '),sg.Checkbox('saved cells', default=True, enable_events=True, key='-cellsave-'),sg.Checkbox('empty cells', default=True, enable_events=True, key='-cellempty-')],
     [sg.Submit('Read EEprom'), sg.Cancel('Exit')]
 ]
-window = sg.Window('Arduino_sketch EEpromMap', layout, finalize=True)
+window = sg.Window('EEpromMap', layout)
 
 def make_map():
     dump.eeprom(1)
@@ -44,6 +44,7 @@ class eeprom_map:
                 window['canvas'].TKCanvas.create_rectangle(eeprom_map.x, eeprom_map.y,eeprom_map.x + eeprom_map.size,eeprom_map.y + eeprom_map.size, fill="lime")
                 if(eeprom_map.cellnumber == 3 or eeprom_map.cellnumber == 2 ):
                     window['canvas'].TKCanvas.create_text(eeprom_map.x + 10, eeprom_map.y + 8, fill="black",font="Times 6 italic bold", text=str(eeprom_map.licznik))
+
                 eeprom_map.x = eeprom_map.x + (eeprom_map.size + 1)
 
 
