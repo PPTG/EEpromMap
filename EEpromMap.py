@@ -62,7 +62,6 @@ class eeprom_map:
 
 while True:
     event, values = window.read()
-    print(event,"val:",values['-cellempty-'])
     if event in (sg.WIN_CLOSED, 'Exit'):
         if os.path.exists("dump.txt"):
             os.remove("dump.txt")
