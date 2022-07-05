@@ -16,7 +16,6 @@ layout = [
     [sg.Submit('Read EEprom'), sg.Cancel('Exit')]
 ]
 window = sg.Window('Arduino_sketch EEpromMap', layout, finalize=True)
-cir = window['canvas'].TKCanvas.create_rectangle(0, 0, 10, 10)
 
 def make_map():
     dump.eeprom(1)
