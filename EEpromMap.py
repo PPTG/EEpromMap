@@ -1,4 +1,3 @@
-#Python EEpromMap drawer based on reding cell state from arduino eeprom
 import PySimpleGUI as sg
 from Serial import *
 from PrepareMap import *
@@ -12,18 +11,23 @@ baudrate_select = ('9600','19200','11200','500000','2000000')
 layout = [
     [sg.Canvas(background_color='grey', size=(window_width,window_height),key='canvas')],
     [sg.Text('Port:'),sg.Combo(com_select,default_value=com_select[0], s=(15,22), enable_events=True, readonly=True, k='-com-'),sg.Text('Baud:'),sg.Combo(baudrate_select,default_value=baudrate_select[0], s=(15,22), enable_events=True, readonly=True, k='-baud-')],
-    [sg.Text('Display cell number: '),sg.Checkbox('saved cells', default=True, enable_events=True, key='-cellsave-'),sg.Checkbox('empty cells', default=True, enable_events=True, key='-cellempty-')],
+    [sg.Text('Display cell number: '),sg.Checkbox('saved cells', default=True, enable_events=True, key='-cellsave-'),sg.Checkbox('empty cells', default=False, enable_events=True, key='-cellempty-')],
     [sg.Submit('Read EEprom'), sg.Cancel('Exit')]
 ]
 window = sg.Window('EEpromMap', layout)
 
 def make_map():
+#    eeprom_map.margin = eeprom_map.size -1
+#    eeprom_map.x = eeprom_map.margin
+#    eeprom_map.y = eeprom_map.size + eeprom_map.size
+#    window['canvas'].TKCanvas.delete("all")
+
     dump.eeprom(1)
     Convert.to_map()
     eeprom_map.draw(1, "map.txt")
 
 class eeprom_map:
-    cellnumber=3
+    cellnumber=1
     size = 20
     margin = size - 1
     licznik = 0
