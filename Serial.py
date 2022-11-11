@@ -5,25 +5,29 @@ class Serial:
     baud_selected = 9600
     ser = 0
 
-    def changeport(self, b):
+    def changeport(b):
         Serial.port_selected = b
 
-    def changebaud(self, c):
+    def changebaud(c):
         Serial.baud_selected = c
 
-    def connect(self):
+    @staticmethod
+    def connect():
         Serial.ser = serial.Serial(Serial.port_selected, Serial.baud_selected)
         time.sleep(3)
 
-    def disconnect(self):
+    @staticmethod
+    def disconnect():
         Serial.ser.close()
 
-    def send(self, a):
+    def send(a):
         Serial.ser.write(a)
 
 class dump:
     licznik=0
-    def eeprom(self):
+
+    @staticmethod
+    def eeprom():
         eeprom_copy = open("dump.txt", "a")
         f = eeprom_copy
         ser = serial.Serial(Serial.port_selected,Serial.baud_selected, timeout=2)
