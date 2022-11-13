@@ -13,6 +13,7 @@ Compiled (with an auto-py-to-exe program) version of the program for Windows use
 EEpromMap shows empty and stored cells with their id.
 
 Libraries used:
+
 -pypiwin32
 -pyserial
 -PySimpleGUI
